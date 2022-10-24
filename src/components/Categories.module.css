@@ -1,0 +1,42 @@
+.categories {
+    background-color: #A81C1C;
+    display: flex;
+    flex-direction: row;
+    padding: 0 10%;
+}
+
+.btn_cat {
+    background-color: transparent;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.9em;
+    font-size: 0.8em;
+    text-decoration: none;
+}
+
+.btn_cat:hover {
+    background-color: #830105;
+    transition: 0.3s;
+}
+
+.loading {
+    background-color: transparent;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.8em;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 992px) {
+    .categories {
+        padding: 0 10%;
+    }
+ 
+}
+@media screen and (min-width: 1400px) {
+    .categories {
+        padding: 0 20%;
+    }
+}
