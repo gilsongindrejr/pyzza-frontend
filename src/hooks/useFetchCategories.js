@@ -8,7 +8,6 @@ export const useFetchCategories = (token = null) => {
     const [cancelled, setCancelled] = useState(null);
 
     const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT + 'categories/';
-    console.log(API_ENDPOINT);
 
     useEffect(() => {
         const loadData = async () => {

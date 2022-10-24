@@ -1,0 +1,127 @@
+.wrap {}
+
+.form {
+    position: relative;
+}
+
+.form_container {
+    height: 40px;
+    border-radius: 0.5em;
+    border: 1px solid #A81C1C;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form_category {
+    display: block;
+    width: 30%;
+}
+
+.dropdown {
+    text-align: center;
+    position: relative;
+    display: block;
+}
+
+.dropdown_btn {
+    width: 100%;
+    border-radius: 0.5em 0 0 0.5em;
+    background-color: #fff;
+    height: 40px;
+    border: none;
+    font-size: 1em;
+    font-family: 'montserrat', sans-serif;
+    cursor: pointer;
+}
+
+.dropdown_btn:hover {
+    box-shadow: -1px 0 #A81C1C, 0 1px #A81C1C, 0 -1px #A81C1C;
+    color: #fff;
+    background-color: #A81C1C;
+    transition: 0.3s;
+}
+
+.dropdown_content {
+    border: 1px solid #181818;
+    width: 100%;
+    background-color: #fff;
+    display: block;
+    position: absolute;
+}
+
+.dropdown_link {
+    border-radius: 0;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    display: block;
+    position: relative;
+    text-align: center;
+    padding: 0.5em 0;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.dropdown input:hover {
+    background-color: #A81C1C;
+    color: #fff;
+    transition: 0.3s;
+}
+
+
+.form_input {
+    padding-left: 1em;
+    flex: 1;
+    display: block;
+    box-sizing: border-box;
+}
+
+.form_input input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1em;
+}
+
+.form_btn {
+    display: block;
+    box-sizing: border-box;
+}
+
+.search_btn {
+    padding: 0 1em;
+    text-align: center;
+    border-radius:  0 0.5em 0.5em 0;
+    border: none;
+    font-size: 1em;
+    height: 40px;
+    box-shadow: 1px 1px #A81C1C, 1px -1px #A81C1C, 0px 1px #A81C1C, 0 -1px #A81C1C;
+    background-color: #A81C1C;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search_btn:hover {
+    background-color: #830105;
+    box-shadow: 1px 1px #830105, 1px -1px #830105, 0px 1px #830105, 0 -1px #830105;
+    transition: 0.3s;
+}
+
+@media screen and (min-width: 600px) {
+    .form_category {
+        width: 25%;
+    }
+}
+@media screen and (min-width: 768px) {
+    .form_category {
+        width: 30%;
+    }
+}
+@media screen and (min-width: 992px) {
+    .form_category {
+        width: 20%;
+    }
+}
