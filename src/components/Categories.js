@@ -1,6 +1,5 @@
 import styles from './Categories.module.css';
 
-import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
@@ -12,7 +11,7 @@ const Categories = () => {
         <div className={styles.categories}>
             {loading && <p className={styles.loading}>Loading...</p>}
             {categories && categories.map(category => (
-                <Link to="#" key={category.id} className={styles.btn_cat}>{category.category}</Link>
+                <a href={`/products?filter=${category.name}`} key={category.id} className={styles.btn_cat}>{category.name}</a>
             ))}
         </div>
     )
