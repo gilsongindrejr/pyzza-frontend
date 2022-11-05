@@ -22,7 +22,7 @@ const Navbar = () => {
         <>
             <nav className={styles.navbar}>
                 <div className={styles.logo}>
-                    <Link to="#"><img src={logo} alt="logo" /></Link>
+                    <Link to="/"><img src={logo} alt="logo" /></Link>
                 </div>
                 <div className={styles.buttons}>
                     <div className={styles.buttons_container}>
