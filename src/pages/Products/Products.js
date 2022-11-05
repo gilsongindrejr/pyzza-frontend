@@ -36,7 +36,7 @@ const Products = () => {
             {products && products.map(product => (
                 <ProductCard key={product.id} image={product.image} name={product.name} desc={product.description} price={product.price} />
             ))}
-            {!products && <h1 className={styles.no_products}>Nao foram encontrados produtos</h1>}
+            {!loading && products.length === 0 && <h1 className={styles.no_products}>Produts not found</h1>}
             {loading && <h1 className={styles.no_products}>Loading...</h1>}
         </div>
     )
