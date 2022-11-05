@@ -5,6 +5,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // components
 import Navbar from './components/Navbar';
 
+// pages
+import Products from './pages/Products/Products';
+
 function App() {
   return (
     <div className="App">
@@ -12,6 +15,11 @@ function App() {
         <BrowserRouter>
           <Navbar />
           {/* Add routes here */}
+          <div className="pages">
+            <Routes>
+              <Route path="/products" element={<Products />} />
+            </Routes>
+          </div>
         </BrowserRouter>
       </div>
     </div>
