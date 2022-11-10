@@ -31,8 +31,8 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(resetError())
         dispatch(postLogin({email, password}))
+        if (!error) dispatch(resetError());
     }
 
     useEffect(() => {
