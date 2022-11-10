@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import logo from '../pyzza.png'
 
@@ -17,6 +17,8 @@ import { getCategories } from '../state/features/categorySlice';
 
 const Navbar = () => {
     const location = useLocation()
+
+    const {logged} = useSelector(state => state.auth)
 
     const dispatch = useDispatch()
 
@@ -31,7 +33,8 @@ const Navbar = () => {
                     <Link to="/"><img src={logo} alt="logo" /></Link>
                 </div>
                 <div className={styles.buttons}>
-                    {location.pathname !== '/login' &&
+                    {!logged &&
+                     location.pathname !== '/login' &&
                      location.pathname !== '/register' &&
                         <div className={styles.buttons_container}>
                             <Link to="#" className='btn btn_white'>Register</Link>
