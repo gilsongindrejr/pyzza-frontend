@@ -1,9 +1,65 @@
-import styles from './Login.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+
+import { useEffect, useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Link, useLocation } from 'react-router-dom';
+
+// Actions
+import { postLogin, resetError } from '../../state/features/loginSlice';
 
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const {error} = useSelector(state => state.auth)
+
+    const location = useLocation();
+
+    const dispatch = useDispatch();
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(resetError())
+        dispatch(postLogin({email, password}))
+    }
+
+    useEffect(() => {
+        dispatch(resetError());
+    }, [location])
+
     return (
-        <div>
-            <h1>Login</h1>
+        <div className='form_container'>
+            <p className='form_title'>Login to your account!</p>
+            {error && <p className='form_error'>Invalid email or password</p>}
+            <form className='form' onSubmit={handleSubmit}>
+                <div className='input_container'>
+                    <span><FontAwesomeIcon icon={faEnvelope} /></span>
+                    <input type="text" placeholder='Email' autoFocus value={email} onChange={handleEmail} />
+                </div>
+                <div className='input_container'>
+                    <span><FontAwesomeIcon icon={faLock} /></span>
+                    <input type="password" placeholder='Password' value={password} onChange={handlePassword} />
+                </div>
+                <div className='submit_container'>
+                    <input type="submit" className='form_submit' value='Login' />
+                </div>
+                <div className='buttons_container'>
+                    <Link to="/register">Register</Link>
+                    <a href="#">Forgot password</a>
+                </div>
+            </form>
         </div>
     )
 }
