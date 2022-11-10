@@ -37,7 +37,7 @@ const Navbar = () => {
                      location.pathname !== '/login' &&
                      location.pathname !== '/register' &&
                         <div className={styles.buttons_container}>
-                            <Link to="#" className='btn btn_white'>Register</Link>
+                            <Link to="/register" className='btn btn_white'>Register</Link>
                             <Link to="/login" className='btn btn_crimson'>Login</Link>
                         </div>
                     }
