@@ -15,7 +15,7 @@ import { postLogin, resetError } from '../../state/features/loginSlice';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const {error} = useSelector(state => state.auth)
+    const {error, loading} = useSelector(state => state.auth)
 
     const location = useLocation();
 
@@ -53,7 +53,7 @@ const Login = () => {
                     <input type="password" placeholder='Password' value={password} onChange={handlePassword} />
                 </div>
                 <div className='submit_container'>
-                    <input type="submit" className='form_submit' value='Login' />
+                    <input type="submit" className={`form_submit ${loading ? 'disabled' : ''}`} value={loading ? 'Loading' : 'Login'} disabled={loading}/>
                 </div>
                 <div className='buttons_container'>
                     <Link to="/register">Register</Link>
