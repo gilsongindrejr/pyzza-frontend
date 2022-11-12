@@ -10,6 +10,7 @@ const Categories = () => {
     return (
         <div className={styles.categories}>
             {loading && <p className={styles.loading}>Loading...</p>}
+            <a href="/products" className={styles.btn_cat}>Products</a>
             {categories && categories.map(category => (
                 <a href={`/products?filter=${category.name}`} key={category.id} className={styles.btn_cat}>{category.name}</a>
             ))}
