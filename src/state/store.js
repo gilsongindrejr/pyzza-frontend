@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 
 import categoryReducer from './features/categorySlice';
 import productReducer from './features/productSlice';
-import loginReducer from './features/loginSlice';
+import loginReducer from './features/authSlice';
 
 const persistConfig = {
     key: 'root',

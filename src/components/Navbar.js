@@ -1,6 +1,6 @@
 import styles from './Navbar.module.css';
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { useEffect } from 'react';
 
@@ -14,13 +14,25 @@ import Categories from './Categories';
 
 // Actions
 import { getCategories } from '../state/features/categorySlice';
+import { logout } from '../state/features/authSlice';
+
+import { useLogoutUser } from '../hooks/useLogoutUser';
 
 const Navbar = () => {
-    const location = useLocation()
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const {logged} = useSelector(state => state.auth)
+    const {status, loading, logoutUser} = useLogoutUser();
 
-    const dispatch = useDispatch()
+    const {logged, token} = useSelector(state => state.auth);
+
+    const dispatch = useDispatch();
+
+    const handleLogout = async (e) => {
+        await logoutUser(token);
+        dispatch(logout());
+        navigate('/')
+    }
 
     useEffect(() => {
         dispatch(getCategories());
@@ -39,6 +51,11 @@ const Navbar = () => {
                         <div className={styles.buttons_container}>
                             <Link to="/register" className='btn btn_white'>Register</Link>
                             <Link to="/login" className='btn btn_crimson'>Login</Link>
+                        </div>
+                    }
+                    {logged && 
+                        <div className="buttons_container">
+                            <button className='btn btn_white' onClick={handleLogout}>Logout</button>
                         </div>
                     }
                 </div>

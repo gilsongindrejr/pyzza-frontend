@@ -8,6 +8,12 @@ p {
     display: flex;
     flex-direction: row;
     padding: 0 10%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar {
+    display: none;
 }
 
 .btn_cat {
@@ -18,6 +24,10 @@ p {
     padding: 0.9em;
     font-size: 0.8em;
     text-decoration: none;
+}
+
+.btn_cat::first-letter {
+    text-transform: capitalize;
 }
 
 .btn_cat:hover {
