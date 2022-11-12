@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const postLogin = createAsyncThunk('login/postLogin', async (params) => {
+export const postLogin = createAsyncThunk('auth/postLogin', async (params) => {
     const LOGIN_URL = process.env.REACT_APP_API_ENDPOINT + 'auth/login'
 
     const response = await fetch(LOGIN_URL, {
@@ -18,8 +18,8 @@ export const postLogin = createAsyncThunk('login/postLogin', async (params) => {
     };
 });
 
-export const loginSlice = createSlice({
-    name: 'login',
+export const authSlice = createSlice({
+    name: 'auth',
     initialState: {
         user: {},
         token: '',
@@ -30,6 +30,9 @@ export const loginSlice = createSlice({
     reducers: {
         resetError: (state, action) => {
             return {...state, error: ''}
+        },
+        logout: (state, action) => {
+            return {...state, user: {}, token: '', logged: false, error: ''};
         }
     },
     extraReducers: {
@@ -52,6 +55,6 @@ export const loginSlice = createSlice({
     }
 })
 
-export const {resetError} = loginSlice.actions
+export const {resetError, logout} = authSlice.actions
 
-export default loginSlice.reducer
+export default authSlice.reducer
