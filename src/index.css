@@ -43,6 +43,7 @@ code {
 
 .btn.btn_white {
   border-radius: 0.4em;
+  border: none;
   color: #181818;
   background-color: #fff;
 }
@@ -59,8 +60,6 @@ code {
 btn_danger:hover {
   background-color: #e70e0e;
 }
-
-
 
 .btn.btn_transparent {
   background-color: transparent;
