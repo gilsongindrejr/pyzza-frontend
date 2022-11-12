@@ -22,6 +22,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState: {
         user: {},
+        address: {},
         token: '',
         logged: false,
         error: '',
@@ -32,7 +33,7 @@ export const authSlice = createSlice({
             return {...state, error: ''}
         },
         logout: (state, action) => {
-            return {...state, user: {}, token: '', logged: false, error: ''};
+            return {...state, user: {}, token: '', logged: false, error: '', address: {}};
         }
     },
     extraReducers: {
@@ -44,6 +45,7 @@ export const authSlice = createSlice({
             state.loading = false;
             state.user = action.payload.user;
             state.token = action.payload.token;
+            state.address = action.payload.address
             if (state.token) { state.logged = true }
             console.log('fulfilled')
         },
