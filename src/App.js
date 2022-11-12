@@ -1,6 +1,7 @@
 import './App.css';
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // components
 import Navbar from './components/Navbar';
@@ -10,7 +11,7 @@ import Footer from './components/Footer';
 import Products from './pages/Products/Products';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register'
-import { useSelector } from 'react-redux';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   const {logged} = useSelector(state => state.auth)
@@ -26,6 +27,7 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/login" element={!logged ? <Login /> : <Navigate to="/"/>} />
               <Route path="/register" element={!logged ? <Register /> : <Navigate to="/"/>} />
+              <Route path="/profile" element={logged ? <Profile /> : <Navigate to="/" />} />
             </Routes>
           </div>
           <Footer />
