@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
 // Actions
-import { postLogin, resetError } from '../../state/features/loginSlice';
+import { postLogin, resetError } from '../../state/features/authSlice';
 
 const Login = () => {
     const [email, setEmail] = useState('');
