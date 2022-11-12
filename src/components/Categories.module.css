@@ -20,6 +20,10 @@ p {
     text-decoration: none;
 }
 
+.btn_cat::first-letter {
+    text-transform: capitalize;
+}
+
 .btn_cat:hover {
     background-color: #830105;
     transition: 0.3s;
