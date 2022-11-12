@@ -101,6 +101,11 @@ btn_danger:hover {
   color: #830105;
 }
 
+.form_message {
+  font-weight: bold;
+  color: #255e1a;
+}
+
 .form {
   text-align: center;
   padding: 0.5em 2em;
@@ -119,6 +124,11 @@ btn_danger:hover {
   font-size: 1em;
   font-family: 'Montserrat', sans-serif;
   padding-left: .5em;
+}
+
+.input_error {
+  box-sizing: border-box;
+  border: 3px solid #A81C1C;
 }
 
 .submit_container {

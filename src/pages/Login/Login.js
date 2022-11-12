@@ -18,6 +18,7 @@ const Login = () => {
     const {error, loading} = useSelector(state => state.auth)
 
     const location = useLocation();
+    const registered = location.state
 
     const dispatch = useDispatch();
 
@@ -43,6 +44,7 @@ const Login = () => {
         <div className='form_container'>
             <p className='form_title'>Login to your account!</p>
             {error && <p className='form_error'>Invalid email or password</p>}
+            {registered && <p className='form_message'>Account created successfully!</p>}
             <form className='form' onSubmit={handleSubmit}>
                 <div className='input_container'>
                     <span><FontAwesomeIcon icon={faEnvelope} /></span>

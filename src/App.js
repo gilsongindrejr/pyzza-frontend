@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 // pages
 import Products from './pages/Products/Products';
 import Login from './pages/Login/Login';
+import Register from './pages/Register/Register'
 import { useSelector } from 'react-redux';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Routes>
               <Route path="/products" element={<Products />} />
               <Route path="/login" element={!logged ? <Login /> : <Navigate to="/"/>} />
+              <Route path="/register" element={!logged ? <Register /> : <Navigate to="/"/>} />
             </Routes>
           </div>
           <Footer />
