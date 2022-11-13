@@ -12,6 +12,7 @@ import Products from './pages/Products/Products';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register'
 import Profile from './pages/Profile/Profile';
+import ChangePassword from './pages/ChangePassword/ChangePassword';
 
 function App() {
   const {logged} = useSelector(state => state.auth)
@@ -28,6 +29,7 @@ function App() {
               <Route path="/login" element={!logged ? <Login /> : <Navigate to="/"/>} />
               <Route path="/register" element={!logged ? <Register /> : <Navigate to="/"/>} />
               <Route path="/profile" element={logged ? <Profile /> : <Navigate to="/" />} />
+              <Route path="/change_password" element={logged ? <ChangePassword /> : <Navigate to="/" />} />
             </Routes>
           </div>
           <Footer />
