@@ -5,6 +5,8 @@ import placeholder from '../../placeholder.jpg';
 import { useSelector } from 'react-redux'
 import { useState } from 'react';
 
+import { Link, useLocation } from 'react-router-dom';
+
 const Profile = () => {
   const { user, address } = useSelector(state => state.auth)
 
@@ -20,6 +22,9 @@ const Profile = () => {
   const [complement, setComplement] = useState('')
 
   const [editing, setEditing] = useState(false);
+
+  const location = useLocation();
+  const changedPassword = location.state
 
   const handleEditing = () => {
     setEditing(!editing)
@@ -38,7 +43,9 @@ const Profile = () => {
 
   return (
     <div className={styles.container}>
-
+      {changedPassword &&
+        <p className='form_message' style={{ textAlign: "center" }}>Password changed successfully!</p>
+      }
       <div className={styles.section}>
         <div className={styles.image}>
           <img src={user.image ? user.image : placeholder} alt="" />
@@ -59,7 +66,7 @@ const Profile = () => {
             <p>Account info</p>
           </div>
           <p>Email: {user.email}</p>
-          <a href="#">Change password</a>
+          <Link to="/change_password">Change password</Link>
         </div>
       </div>
 
