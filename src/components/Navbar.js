@@ -54,8 +54,9 @@ const Navbar = () => {
                         </div>
                     }
                     {logged && 
-                        <div className="buttons_container">
-                            <button className='btn btn_white' onClick={handleLogout}>Logout</button>
+                        <div className={styles.buttons_container}>
+                            <Link to="/profile" className='btn btn_crimson'>Profile</Link>
+                            <button className={styles.logout} onClick={handleLogout}>Logout</button>
                         </div>
                     }
                 </div>

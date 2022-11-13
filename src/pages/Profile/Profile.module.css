@@ -1,0 +1,74 @@
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding-top: 2em;
+}
+
+.section {
+    border-bottom: 1px solid #585858;
+    display: flex;
+    justify-content: space-between;
+    margin: 1em;
+    padding-bottom: 1em;
+}
+
+.image img {
+    border: 3px solid #585858;
+    border-radius: 100%;
+    width: 180px;
+    height: 180px;
+}
+
+.user_info, .account_info, .address_info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 0 0.5em;
+}
+
+.user_info {
+    padding: 0 0 0 1em;
+    justify-content: center;
+}
+
+.user_info p, .account_info p, .address_info p {
+    padding-bottom: .5em;
+}
+
+.account_info a {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    padding: 0.7em;
+    border: 2px solid black;
+}
+
+.info_title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.info_title p {
+    padding-bottom: 1em;
+}
+
+.address_info:nth-child(2) {
+    padding-top: 2.6em;
+}
+
+.changed_password {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+@media screen and (min-width: 768px) {
+    .user_info {
+        padding-left: 1em;
+    }
+}
