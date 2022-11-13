@@ -6,9 +6,12 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react';
 
 import { Link, useLocation } from 'react-router-dom';
+import { useUpdateUser } from '../../hooks/useUpdateUser';
 
 const Profile = () => {
-  const { user, address } = useSelector(state => state.auth)
+  const { user, token, address } = useSelector(state => state.auth)
+
+  const { loading, updateUser } = useUpdateUser();
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -21,6 +24,8 @@ const Profile = () => {
   const [houseNumber, setHouseNumber] = useState('')
   const [complement, setComplement] = useState('')
 
+  const [message, setMessage] = useState('')
+
   const [editing, setEditing] = useState(false);
 
   const location = useLocation();
@@ -28,6 +33,8 @@ const Profile = () => {
 
   const handleEditing = () => {
     setEditing(!editing)
+
+    setMessage('')
 
     setFirstName(user.first_name)
     setLastName(user.last_name);
@@ -41,11 +48,34 @@ const Profile = () => {
     setComplement(address.complement);
   }
 
+  const handleUpdateUser = async () => {
+    setEditing(!editing)
+
+    const params = {
+      first_name: firstName,
+      last_name: lastName,
+      cpf: cpf,
+      zip_code: zipCode,
+      state: state,
+      city: city,
+      neighborhood: neighborhood,
+      street: street,
+      house_number: houseNumber,
+      complement: complement
+    }
+
+    const response = updateUser(params, token)
+    if (response.status !== 204) {
+      setMessage('Profile updated successfully!')
+    } else {
+      console.log('400 BAD REQUEST')
+    }
+  }
+
   return (
     <div className={styles.container}>
-      {changedPassword &&
-        <p className='form_message' style={{ textAlign: "center" }}>Password changed successfully!</p>
-      }
+      {changedPassword && <p className='form_message' style={{ textAlign: "center" }}>Password changed successfully!</p>}
+      {message && <p className='form_message' style={{ textAlign: 'center' }}>{message}</p>}
       <div className={styles.section}>
         <div className={styles.image}>
           <img src={user.image ? user.image : placeholder} alt="" />
@@ -94,7 +124,10 @@ const Profile = () => {
       <div className={styles.section}>
         {editing
           ?
-          <button className='form_submit' onClick={() => setEditing(!editing)}>Save</button>
+          <>
+            <button className='form_submit' style={{marginRight: '0.5em'}} onClick={() => setEditing(!editing)}>Cancel</button>
+            <button className='form_submit' style={{marginLeft: '0.5em'}} onClick={handleUpdateUser}>Save</button>
+          </>
           :
           <button className='form_submit' onClick={handleEditing}>Edit</button>
         }
