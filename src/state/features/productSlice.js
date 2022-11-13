@@ -3,7 +3,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 export const getProducts = createAsyncThunk('products/getProducts', async (params) => {
 
     let API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT + 'products/';
-    const API_TOKEN = process.env.REACT_APP_API_TOKEN
 
     if(Object.keys(params).length > 0){
         API_ENDPOINT = API_ENDPOINT + '?'
@@ -27,7 +26,7 @@ export const getProducts = createAsyncThunk('products/getProducts', async (param
         putAmpersand();
     }
 
-    return fetch(API_ENDPOINT, { headers: { 'Authorization': `Token ${API_TOKEN}` } }).then((res) =>
+    return fetch(API_ENDPOINT).then((res) =>
         res.json()
     );
 })
